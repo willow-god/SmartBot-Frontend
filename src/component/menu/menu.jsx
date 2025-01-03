@@ -43,6 +43,10 @@ const items = [
                         label: "文本检索",
                     },
                     {
+                        key: "/image-search",
+                        label: "图片检索",
+                    },
+                    {
                         key: "/global-search",
                         label: "全局检索",
                     },

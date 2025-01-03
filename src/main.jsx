@@ -4,7 +4,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // 图像检索相应内容
-const SearchClassified = lazy(() => import('./component/search-text/App.jsx'));
+const SearchText = lazy(() => import('./component/search-text/App.jsx'));
+const SearchImage = lazy(() => import('./component/search-image/App.jsx'));
 const SearchGlobal = lazy(() => import('./component/search-global/App.jsx'));
 
 const UploadApp = lazy(() => import('./component/upload/App.jsx'));
@@ -42,56 +43,21 @@ const Router = createBrowserRouter([
     ),
   },
   {
-    path: "/upload",
-    element: (
-      <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <h2>📤📤📤上传文件</h2>
-          <UploadApp />
-        </Suspense>
-      </Layout>
-    ),
-  },
-  {
-    path: "/licence-plate",
-    element: (
-      <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <h2>🚗🚗🚗车牌检索</h2>
-          <h3>你可以输入车牌并检索，我们将进行匹配并输出结果</h3>
-          <LicenceApp />
-        </Suspense>
-      </Layout>
-    ),
-  },
-  {
-    path: "/face-recognition",
-    element: (
-      <Layout>
-        <Suspense fallback={<div>Loading...</div>}>
-          <h2>🧔🏻🧔🏻🧔🏻人脸识别</h2>
-          <h3>你可以上传一张人脸，我们将进行相似度搜索并展示所有结果</h3>
-          <FaceApp />
-        </Suspense>
-      </Layout>
-    ),
-  },
-  {
     path: "/text-search",
     element: (
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>
-          <SearchClassified />
+          <SearchText />
         </Suspense>
       </Layout>
     ),
   },
   {
-    path: "/text-search",
+    path: "/image-search",
     element: (
       <Layout>
         <Suspense fallback={<div>Loading...</div>}>
-          <SearchClassified />
+          <SearchImage />
         </Suspense>
       </Layout>
     ),
