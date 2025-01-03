@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 固定顶部标题 */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-color: #333;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  flex-direction: row; /* 左右分布 */
+  margin-top: 60px;
+  width: 100%;
+  height: calc(100vh - 60px); /* 减去顶部标题高度 */
+}
+
+/* 固定左侧菜单 */
+.container-menu {
+  position: fixed;
+  top: 60px; /* 紧贴标题下方 */
+  left: 0;
+  width: 256px;
+  height: 100%; /* 高度为视窗高度减去标题高度 */
+  background-color: #f8f8f8;
+  overflow-y: auto; /* 允许菜单内滚动 */
+  border-right: 1px solid #ccc;
+}
+
+.container-menu::-webkit-scrollbar {
+  display: none; /* 隐藏滚动条 */
+}
+
+.container-menu {
+  -ms-overflow-style: none; /* 适用于 IE 和 Edge */
+  scrollbar-width: none; /* 适用于 Firefox */
+}
+
+/* 内容区域（滚动部分） */
+.content {
+  margin-left: 256px; /* 为了避开固定菜单的宽度 */
+  width: calc(100% - 256px); /* 宽度为总宽度减去菜单宽度 */
+  padding: 40px;
+  height: calc(100vh - 210px); /* 内容高度减去顶部标题高度 */
+  overflow-y: auto; /* 允许内容滚动 */
+  overflow-x: hidden;
+}
+
+/* 美化滚动条 */
+.content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+@media (min-width: 1500px){
+  .content {
+    padding: 80px 80px;
+  }
+}
+
+/* 响应式布局 */
+@media (max-width: 768px) {
+  .header {
+    /* 字体居左，超出部分省略号 */
+    text-align: left;
+    justify-content: flex-start !important;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+
+  }
+  .container-menu {
+    height: 0px; /* 菜单高度 */
+    width: 0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .container-menu button {
+    display: block; /* 显示按钮 */
+    position: fixed; /* 按钮固定位置 */
+    bottom: 20px; /* 距离页面顶部 */
+    left: 20px; /* 距离页面左侧 */
+    z-index: 1000; /* 确保按钮位于最上层 */
+    cursor: pointer;
+  }
+
+  .content {
+    margin-left: 0; /* 内容部分填满屏幕宽度 */
+    height: calc(100vh - 100px);
+    width: 100%;
+    padding: 20px; /* 减少内边距以适应小屏幕 */
+  }
+}
+
+
